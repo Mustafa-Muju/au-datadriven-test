@@ -1,2 +1,2 @@
 # au-datadriven-test
-**This test consist of Selenium 4 maven and Thread local for parallel test**
+**This test made of data driven using Selenium4, maven, TestNG and Thread local**
