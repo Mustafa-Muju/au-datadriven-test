@@ -1,0 +1,58 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="eMed BAT Suite" thread-count="1" parallel="classes">
+
+	<test name="BAT Test" preserve-order="true">
+
+		<method-selectors>
+			<method-selector>
+				<script language="beanshell">
+					<![CDATA[
+                    String testGroup = System.getenv("gTag");
+                    groups.containsKey(testGroup);
+                ]]>
+				</script>
+			</method-selector>
+		</method-selectors>
+		<classes>
+			<class name="test.bat.ECOMM">
+				<methods>
+					<include name="a_ecomm" />
+					<include name="b_ecomm" />
+					<include name="c_ecomm" />
+					<include name="d_ecomm" />
+					<include name="e_ecomm" />
+				</methods>
+			</class>
+
+			<class name="test.bat.Links">
+				<methods>
+					<include name="a_links" />
+					<include name="b_links" />
+					<include name="c_links" />
+					<include name="d_links" />
+					<include name="e_links" />
+				</methods>
+			</class>
+			
+			<class name="test.bat.CSDB">
+				<methods>
+					<include name="a_csdb" />
+					<include name="b_csdb" />
+					<include name="c_csdb" />
+				</methods>
+			</class>
+
+			<class name="test.bat.Vlab">
+				<methods>
+					<include name="a_vlab" />
+					<include name="b_vlab" />
+					<include name="c_vlab" />
+					<include name="d_vlab" />
+					<include name="e_vlab" />
+				</methods>
+			</class>
+
+		</classes>
+	</test>
+
+</suite>
