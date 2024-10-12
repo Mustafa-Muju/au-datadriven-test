@@ -4,7 +4,7 @@
 
 ##Environment variables syntax
 
-###1. BROWSER
+###BROWSER
 
 	Browser=BrowserName:Mode
 
@@ -13,17 +13,17 @@
 
 &emsp;&emsp;&emsp;**Note: Incognito mode is provided only for chrome browser. For other browsers only normal mode.**
 
-###2. Test Group Name
+###Test Group Name
 
 	GTag=GroupName
 - **GroupName** - Test Group Name of the test cases to be executed (ex: swagtest)
 
-###3. ENVIRONMENT
+###ENVIRONMENT
 
 	Env=AppEnvironment
 - **AppEnvironment** - Application environment where the test need to be executed (ex: test)
 
-###4. REPORTING EMAIL
+###REPORTING EMAIL
 
 	Mail=VerboseType:ToEmailAddress
 - **VerboseType** - Verbose type are integer value defines the customizable email body while sending report (ex: 1)
