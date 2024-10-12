@@ -1,10 +1,10 @@
-#au-datadriven-test 
+# au-datadriven-test 
 
 **The data driven using Selenium 4, Maven, TestNG and Java Thread Local**
 
-##Environment variables syntax
+## Environment variables syntax
 
-###BROWSER
+### 1. BROWSER
 
 	Browser=BrowserName:Mode
 
@@ -13,17 +13,17 @@
 
 &emsp;&emsp;&emsp;**Note: Incognito mode is provided only for chrome browser. For other browsers only normal mode.**
 
-###Test Group Name
+### 2. Test Group Name
 
 	GTag=GroupName
 - **GroupName** - Test Group Name of the test cases to be executed (ex: swagtest)
 
-###ENVIRONMENT
+### 3. ENVIRONMENT
 
 	Env=AppEnvironment
 - **AppEnvironment** - Application environment where the test need to be executed (ex: test)
 
-###REPORTING EMAIL
+### 4. REPORTING EMAIL
 
 	Mail=VerboseType:ToEmailAddress
 - **VerboseType** - Verbose type are integer value defines the customizable email body while sending report (ex: 1)
