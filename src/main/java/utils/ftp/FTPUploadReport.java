@@ -30,10 +30,10 @@ public class FTPUploadReport extends TestBase {
 	}
 
 	public static String ftpTransfer() {
-		String server = "35.245.123.100";
+		String server = "";
 		int port = 21;
-		String user = "mustafa";
-		String pass = "Welcome@123";
+		String user = "";
+		String pass = "";
 		String outputFile = "";
 
 		FTPClient ftpClient = new FTPClient();

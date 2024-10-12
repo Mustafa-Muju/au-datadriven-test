@@ -1,6 +1,5 @@
 package main.java.utils;
 
-import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,8 +11,6 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
-
-import encryptusercredentials.EncryptCredentails;
 
 import org.openqa.selenium.Proxy;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -32,119 +29,13 @@ public class InvokeBrowser extends TestBase {
 	 * @throws Exception
 	 * 
 	 */
-	public static String getBaseUrl(String platform) throws Exception {
+	public static String getBaseUrl(String env) throws Exception {
 		String baseurl = "";
 
-		switch (platform) {
+		switch (env) {
 
-		case "WWW":
-
-			switch (env.toLowerCase()) {
-			case "stg":
-			case "dev2":
-			case "qa":
-
-				if (BrowserNeed.equalsIgnoreCase("chrome") || BrowserNeed.equalsIgnoreCase("msedge")) {
-					baseurl = "https://"
-							+ new EncryptCredentails()
-									.decrypt(CommonFunctions.getPropertyValues().getProperty("wwwusername"))
-							+ ":"
-							+ new EncryptCredentails()
-									.decrypt(CommonFunctions.getPropertyValues().getProperty("wwwpassword"))
-							+ "@" + env + ".emed.com";
-
-				} else if (BrowserNeed.equalsIgnoreCase("safari") || BrowserNeed.equalsIgnoreCase("firefox")) {
-					baseurl = "https://" + env + ".emed.com";
-				}
-				break;
-
-			case "prod":
-				baseurl = "https://emed.com/app";
-				break;
-				
-			case "training":
-				baseurl = "https://training.emed.com/";
-				break;
-
-			default:
-				CommonFunctions.logErrorMessageStopExecution("Incorrect environment is selected");
-				break;
-
-			}
-			break;
-
-		case "AWSConnectProctor":
-			baseurl = "https://emed-develop.awsapps.com/connect/home";
-			break;
-
-		case "BinaxExpress":
-			baseurl = "https://comingsoon.emed.com/express-qa";
-			break;
-
-		case "CoreBinaxNow":
-			baseurl = "https://stg.core.emed.com/procedure/begin?scope=demo.navica&client_id=emed-qa";
-			break;
-
-		case "CoreBinaxExpress":
-			baseurl = "https://stg.core.emed.com/procedure/begin?scope=binax_express&client_id=emed-qa";
-			break;
-
-		case "CoreQuidel":
-			baseurl = "https://stg.core.emed.com/procedure/begin?scope=quidel_covid&client_id=emed-qa";
-			break;
-
-		case "CoreBinaxGovt":
-			baseurl = "https://stg.core.emed.com/procedure/begin?scope=binax_govt&client_id=emed-qa";
-			break;
-
-		case "CoreBinaxOTC":
-			baseurl = "https://stg.core.emed.com/procedure/begin?scope=binaxnow_selftest&client_id=emed-qa";
-			break;
-			
-		case "CoreACON":
-			baseurl = "https://stg.core.emed.com/procedure/begin?scope=acon&client_id=emed-qa";
-			break;
-			
-		case "CoreBinaxForward":
-			baseurl = "https://stg.core.emed.com/procedure/begin?scope=binax_forward&client_id=emed-qa";
-			break;
-			
-		case "CoreLucira":
-			baseurl = "https://stg.core.emed.com/procedure/begin?scope=lucira-checkit-covid19-athometest&client_id=emed-qa";
-			break;
-			
-		case "CoreSDBioSensor":
-			baseurl = "https://stg.core.emed.com/procedure/begin?scope=sdbiosensor_covid19_athometest&client_id=emed-qa";
-			break;
-			
-		case "CoreiHealth":
-			baseurl = "https://stg.core.emed.com/procedure/begin?scope=ihealthlabsinc_antigenrapidtest_covid19&client_id=emed-qa";
-			break;
-
-		case "LKTransfer":
-			baseurl = "https://www.lktransfer.com/LKTransferDashboard";
-			break;
-
-		case "CSDB":
-			if (env.equalsIgnoreCase("prod")) {
-				baseurl = "https://admin.emed.com";
-			} else if (env.equalsIgnoreCase("qa")) {
-				baseurl = "https://admin.dev2.emed.com";
-			} else {
-				baseurl = "https://admin." + env + ".emed.com";
-			}
-			break;
-
-		case "GogoMed":
-			baseurl = "https://uat.gogomeds.com/GoGoClientSprint86/#/home";
-			break;
-
-		case "LifePoint":
-			baseurl = "https://www.lptest40.com/EMED/LPI3_4_2/lpi3/index.cfm/auth/login";
-			break;
-
-		case "ElasticPath":
-			baseurl = "https://dashboard.elasticpath.com/app";
+		case "test":
+			baseurl ="https://www.saucedemo.com/v1/";
 			break;
 
 		default:
@@ -212,12 +103,10 @@ public class InvokeBrowser extends TestBase {
 					if (mode.equalsIgnoreCase("incog")) {
 						options.addArguments("--incognito");
 					}
-					if (platform.equalsIgnoreCase("WWW") || platform.equalsIgnoreCase("BinaxExpress")
-							|| platform.equalsIgnoreCase("AWSConnectProctor")) {
-						options.addExtensions(new File(
-								System.getProperty("user.dir") + "/src/main/resources/ext/basic-auth/extension.crx"));
-						options.addArguments("--no-sandbox");
-					}
+//					options.addExtensions(new File(
+//							System.getProperty("user.dir") + "/src/main/resources/ext/basic-auth/extension.crx"));
+//					options.addArguments("--no-sandbox");
+
 					options.addArguments("use-fake-ui-for-media-stream");
 					options.addArguments("test-type");
 					options.addArguments("ignore-certificate-errors");
@@ -241,11 +130,9 @@ public class InvokeBrowser extends TestBase {
 //					options.addArguments(
 //							"user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36");
 //					options.addArguments("--headless");
-					if (platform.equalsIgnoreCase("WWW") || platform.equalsIgnoreCase("BinaxExpress")
-							|| platform.equalsIgnoreCase("AWSConnectProctor")) {
-						options.addExtensions(new File(
-								System.getProperty("user.dir") + "/src/main/resources/ext/basic-auth/extension.crx"));
-					}
+					
+//					options.addExtensions(new File(
+//								System.getProperty("user.dir") + "/src/main/resources/ext/basic-auth/extension.crx"));
 					options.addArguments("--no-sandbox");
 					options.addArguments("--disable-setuid-sandbox");
 					options.addArguments("--disable-dev-shm-usage");
@@ -282,16 +169,9 @@ public class InvokeBrowser extends TestBase {
 			getDriver().manage().window().maximize();
 			getDriver().get(url);
 
-			if (platform.equalsIgnoreCase("WWW")) {
-				if (env.equalsIgnoreCase("prod")) {
-					CommonFunctions.logMessage("Navigated to the site ===> " + "https://emed.com");
-				} else {
-					CommonFunctions.logMessage("Navigated to the site ===> " + "https://" + env + ".emed.com");
-				}
+			
+			CommonFunctions.logMessage("Navigated to the site ===> " + url);
 
-			} else {
-				CommonFunctions.logMessage("Navigated to the site ===> " + url);
-			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

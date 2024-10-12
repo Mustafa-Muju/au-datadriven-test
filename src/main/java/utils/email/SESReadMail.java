@@ -13,6 +13,7 @@ public class SESReadMail extends TestBase {
 
 	private static String emailSessionId = "";
 	private static String messageId = "";
+	private static String baseUri = "https://6j8oaw2fr7.execute-api.us-east-1.amazonaws.com";
 
 	/**
 	 * 
@@ -27,7 +28,7 @@ public class SESReadMail extends TestBase {
 
 		try {
 
-			RestAssured.baseURI = "https://6j8oaw2fr7.execute-api.us-east-1.amazonaws.com/v0/create";
+			RestAssured.baseURI = ""+baseUri+"/v0/create";
 
 			RequestSpecification httpRequest = RestAssured.given();
 
@@ -65,7 +66,7 @@ public class SESReadMail extends TestBase {
 
 			try {
 
-				RestAssured.baseURI = "https://6j8oaw2fr7.execute-api.us-east-1.amazonaws.com/v0/" + email + "";
+				RestAssured.baseURI = ""+baseUri+"/v0/" + email + "";
 
 				RequestSpecification httpRequest = RestAssured.given().urlEncodingEnabled(false);
 
@@ -117,7 +118,7 @@ public class SESReadMail extends TestBase {
 
 		try {
 
-			RestAssured.baseURI = "https://6j8oaw2fr7.execute-api.us-east-1.amazonaws.com/v0/" + email + "/" + messageId
+			RestAssured.baseURI = ""+baseUri+"/v0/" + email + "/" + messageId
 					+ "";
 
 			RequestSpecification httpRequest = RestAssured.given().urlEncodingEnabled(false);
@@ -147,7 +148,7 @@ public class SESReadMail extends TestBase {
 	 * @throws Exception
 	 * 
 	 */
-	public static String fetchMail(String email, String subjectName, String codeName) throws Exception {
+	public static String fetchMail(String email, String subjectName, String message) throws Exception {
 
 		Thread.sleep(5000);
 		generateEmailInbox(email);
@@ -155,7 +156,7 @@ public class SESReadMail extends TestBase {
 
 		String rawBody = Jsoup.parse(CommonFunctions.regexText("html[\\s\\S]+\\/html", getEmailContent(email))).text();
 
-		CommonFunctions.logMessage("Opened the AWS SES Read mail inbox and fetched the email for " + codeName);
+		CommonFunctions.logMessage("Opened the AWS SES Read mail inbox and fetched the email for " + message);
 
 		return rawBody;
 	}

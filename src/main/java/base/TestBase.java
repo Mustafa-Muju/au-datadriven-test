@@ -5,11 +5,9 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
@@ -65,13 +63,6 @@ public class TestBase {
 	public static String tagName = System.getenv("gTag");
 
 	/**
-	 * Proctor Authentication
-	 */
-	public static String proctorCredentials = System.getProperty("PROC");
-	public static String proctorUserCred = "";
-	public static String proctorPasswordCred = "";
-
-	/**
 	 * Browser Configuration
 	 */
 	public static String[] browser = System.getenv("Browser").split(":");
@@ -102,7 +93,7 @@ public class TestBase {
 	/**
 	 * Email and report variables
 	 */
-	public static String emailReport = System.getProperty("mail");
+	public static String emailReport = System.getenv("mail");
 	public static String mailVerbose = "";
 	public static String toReport = "";
 
@@ -168,117 +159,6 @@ public class TestBase {
 	public static ThreadLocal<String> Code = new ThreadLocal<String>();
 	public static String getCode() {
 		return Code.get();
-	}
-	
-	public static ThreadLocal<String> emailId = new ThreadLocal<String>();
-	public static String getEmailId() {
-		return emailId.get();
-	}
-	
-	public static ThreadLocal<String> navicaEmail = new ThreadLocal<String>();
-	public static String getNavicaEmail() {
-		return navicaEmail.get();
-	}
-
-	/**
-	 * Cart Page
-	 */
-	public static List<String> assessmentSymptoms = new ArrayList<String>();
-
-	/**
-	 * ReviewAndConfirmation
-	 */
-	public static ThreadLocal<String> confirmationNum = new ThreadLocal<String>();
-	public static String getConfirmationNumber() {
-		return confirmationNum.get();
-	}
-
-	public static ThreadLocal<String> orderId = new ThreadLocal<String>();
-	public static String getOrderId() {
-		return orderId.get();
-	}
-
-	public static ThreadLocal<String> eMedId = new ThreadLocal<String>();
-	public static String getEMedId() {
-		return eMedId.get();
-	}
-
-	/**
-	 * Payment Page
-	 */
-	public static ThreadLocal<String> orderSubRate = new ThreadLocal<String>();
-	public static String getOrderSubRate() {
-		return orderSubRate.get();
-	}
-	public static ThreadLocal<String> orderShippingRate = new ThreadLocal<String>();
-	public static String getOrderShippingRate() {
-		return orderShippingRate.get();
-	}
-	public static ThreadLocal<String> shippingMethodPrice = new ThreadLocal<String>();
-	public static String getShippingMethodPrice() {
-		return shippingMethodPrice.get();
-	}
-	public static ThreadLocal<String> orderShippingMethod = new ThreadLocal<String>();
-	public static String getOrderShippingMethod() {
-		return orderShippingMethod.get();
-	}
-	public static ThreadLocal<String> orderShippingAddress = new ThreadLocal<String>();
-	public static String getOrderShippingAddress() {
-		return orderShippingAddress.get();
-	}
-	public static ThreadLocal<String> orderTaxRate = new ThreadLocal<String>();
-	public static String getOrderTaxRate() {
-		return orderTaxRate.get();
-	}
-	public static ThreadLocal<String> orderTotalAmount = new ThreadLocal<String>();
-	public static String getOrderTotalAmount() {
-		return orderTotalAmount.get();
-	}
-	public static ThreadLocal<String> orderQuantity = new ThreadLocal<String>();
-	public static String getOrderQuantity() {
-		return orderQuantity.get();
-	}
-	public static ThreadLocal<String> ordersuggestedAddress = new ThreadLocal<String>();
-	public static String getOrdersuggestedAddress() {
-		return ordersuggestedAddress.get();
-	}
-	public static ThreadLocal<String> ordersuggestedzipcode = new ThreadLocal<String>();
-	public static String getOrdersuggestedzipcode() {
-		return ordersuggestedzipcode.get();
-	}
-	public static ThreadLocal<String> ordersuggestedphnumb = new ThreadLocal<String>();
-	public static String getOrdersuggestedphnumb() {
-		return ordersuggestedphnumb.get();
-	}
-
-	/**
-	 * MyOrder Page
-	 */
-	public static ThreadLocal<String> orderedDate = new ThreadLocal<String>();
-	public static String getOrderedDate() {
-		return orderedDate.get();
-	}
-
-	/**
-	 * Virtual Lab session
-	 */
-	public static ThreadLocal<String> dependentPatientName = new ThreadLocal<String>();
-	public static String getDependentPatientName() {
-		return dependentPatientName.get();
-	}
-	
-	public static ThreadLocal<String> labSessionId = new ThreadLocal<String>();
-	public static String getLabSessnId() {
-		return labSessionId.get();
-	}
-
-	/**
-	 * CSDB order details page
-	 * 
-	 */
-	public static ThreadLocal<LinkedList<String>> listReasons = ThreadLocal.withInitial(LinkedList::new);
-	public static LinkedList<String> getListReasons() {
-		return listReasons.get();
 	}
 
 	/**
@@ -462,7 +342,7 @@ public class TestBase {
 			
 			if (mailVerbose.equals("1") || mailVerbose.equals("2") || mailVerbose.equals("3")) {
 				MailSender.fileZip();
-				MailSender.sendReport();
+				//MailSender.sendReport();
 			}
 		}
 	}

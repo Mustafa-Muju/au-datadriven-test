@@ -51,24 +51,24 @@ public class PostgresSQLConnector extends TestBase {
 		switch (dbName.toLowerCase()) {
 		case "medoasis":
 			port = "5432";
-			db_name = "emed_db";
-			username = "medoasis_app";
+			db_name = "";
+			username = "";
 
 			switch (env.toLowerCase()) {
 			case "stg":
-				host = "staging-medoasis-db.cluster-coin2meakmvt.us-east-1.rds.amazonaws.com";
-				password = "DXSsrU9Fwa";
+				host = "";
+				password = "";
 				break;
 
 			case "dev2":
-				host = "dev-medoasis-db.cluster-c9okq3makatu.us-east-1.rds.amazonaws.com";
-				password = "sD2x1G58mU";
+				host = "";
+				password = "";
 				break;
 
-//			case "prod":
-//				host = "prod-medoasis-db.cluster-ro-csxwwwylprko.us-east-1.rds.amazonaws.com";
-//				password = "vZFJSOI1KD";
-//				break;
+			case "prod":
+				host = "";
+				password = "";
+				break;
 
 			default:
 				break;
@@ -77,24 +77,24 @@ public class PostgresSQLConnector extends TestBase {
 
 		case "core":
 			port = "5432";
-			db_name = "emed_core";
-			username = "core_app";
+			db_name = "";
+			username = "";
 
 			switch (env.toLowerCase()) {
 			case "stg":
-				host = "staging-core-services-db.cluster-ro-coin2meakmvt.us-east-1.rds.amazonaws.com";
-				password = "UQOwqUhx6o";
+				host = "";
+				password = "";
 				break;
 
 			case "dev2":
-				host = "dev-core-services-db.cluster-ro-c9okq3makatu.us-east-1.rds.amazonaws.com";
-				password = "cVJ6IH5DXv";
+				host = "";
+				password = "";
 				break;
 
-//			case "prod":
-//				host = "prod-core-services-db.cluster-ro-csxwwwylprko.us-east-1.rds.amazonaws.com";
-//				password = "XJ71_GE3Fz";
-//				break;
+			case "prod":
+				host = "";
+				password = "";
+				break;
 
 			default:
 				break;

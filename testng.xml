@@ -14,41 +14,10 @@
 			</method-selector>
 		</method-selectors>
 		<classes>
-			<class name="test.bat.ECOMM">
-				<methods>
-					<include name="a_ecomm" />
-					<include name="b_ecomm" />
-					<include name="c_ecomm" />
-					<include name="d_ecomm" />
-					<include name="e_ecomm" />
-				</methods>
-			</class>
 
-			<class name="test.bat.Links">
+			<class name="test.bat.SwagTest">
 				<methods>
-					<include name="a_links" />
-					<include name="b_links" />
-					<include name="c_links" />
-					<include name="d_links" />
-					<include name="e_links" />
-				</methods>
-			</class>
-			
-			<class name="test.bat.CSDB">
-				<methods>
-					<include name="a_csdb" />
-					<include name="b_csdb" />
-					<include name="c_csdb" />
-				</methods>
-			</class>
-
-			<class name="test.bat.Vlab">
-				<methods>
-					<include name="a_vlab" />
-					<include name="b_vlab" />
-					<include name="c_vlab" />
-					<include name="d_vlab" />
-					<include name="e_vlab" />
+					<include name="a_swaglab" />
 				</methods>
 			</class>
 

@@ -18,10 +18,8 @@ import main.java.utils.CommonFunctions;
  */
 public class MaillinatorRestAPI extends TestBase {
 
-	private static String api_token = "409fe3aefe444f55b713200a80cb49f1";
+	private static String api_token = "";
 	private static String emailIdentity = "";
-	private static String emailName = "";
-
 	/**
 	 * 
 	 * @This method to get the Email ID
@@ -53,7 +51,7 @@ public class MaillinatorRestAPI extends TestBase {
 
 				if (jsonPathEvaluator.getString("msgs[" + mailSubject + "].subject").equalsIgnoreCase(subjectName)) {
 					emailIdentity = jsonPathEvaluator.getString("msgs[" + mailSubject + "].id");
-					emailName = jsonPathEvaluator.getString("msgs[" + mailSubject + "].origfrom");
+					jsonPathEvaluator.getString("msgs[" + mailSubject + "].origfrom");
 					flag = true;
 					break;
 				}

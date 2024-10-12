@@ -92,8 +92,8 @@ public class MailReader extends TestBase{
 		Session session = Session.getDefaultInstance(new Properties());
 		Store store = session.getStore("imaps");
 		store.connect("imap.googlemail.com", 993,
-				new EncryptCredentails().decrypt(CommonFunctions.getPropertyValues().getProperty("username")),
-				new EncryptCredentails().decrypt(CommonFunctions.getPropertyValues().getProperty("password")));
+				new EncryptCredentails().decrypt(CommonFunctions.getPropertyValues().getProperty("emailusername")),
+				new EncryptCredentails().decrypt(CommonFunctions.getPropertyValues().getProperty("emailpassword")));
 		Folder inbox = store.getFolder("INBOX");
 		inbox.open(Folder.READ_WRITE);
 

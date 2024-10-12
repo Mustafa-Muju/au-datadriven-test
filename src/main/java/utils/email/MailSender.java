@@ -53,15 +53,15 @@ public class MailSender extends TestBase {
 		if (System.getenv("JOB_NAME") != null && System.getProperty("os.name").contains("Linux")) {
 			email_username = System.getenv("SES_USERNAME");
 			email_password = System.getenv("SES_PASSWORD");
-			email_from = "jenkins@qa-apps.emed.com";
+			email_from = "";
 			email_smtp_server = "email-smtp.us-east-1.amazonaws.com";
 
 		} else {
 			email_username = new EncryptCredentails()
-					.decrypt(CommonFunctions.getPropertyValues().getProperty("username"));
+					.decrypt(CommonFunctions.getPropertyValues().getProperty("emailusername"));
 			email_password = new EncryptCredentails()
-					.decrypt(CommonFunctions.getPropertyValues().getProperty("password"));
-			email_from = new EncryptCredentails().decrypt(CommonFunctions.getPropertyValues().getProperty("username"));
+					.decrypt(CommonFunctions.getPropertyValues().getProperty("emailpassword"));
+			email_from = new EncryptCredentails().decrypt(CommonFunctions.getPropertyValues().getProperty("emailusername"));
 			email_smtp_server = "smtp.gmail.com";
 		}
 	}
