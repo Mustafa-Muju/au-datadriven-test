@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import main.java.base.TestBase;
+import main.java.flows.swaglab.SwagLabFlow;
 import main.java.utils.CommonFunctions;
 import main.java.utils.InvokeBrowser;
 
@@ -31,6 +32,7 @@ public class SwagTest extends TestBase {
 	public void a_swaglab() throws Exception {
 		getMethodData(1);
 		InvokeBrowser.invokeApplication(CommonFunctions.getdata("Platform"));
+		SwagLabFlow.swagLabLoginFlow();
 
 	}
 

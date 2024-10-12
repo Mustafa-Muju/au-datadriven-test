@@ -18,9 +18,9 @@ public class SwagLabFlow extends TestBase {
 	public static void swagLabLoginFlow() throws Exception {
 		new SwagLabLandingPage().verifySwagLoginPage();
 		new SwagLabLandingPage().enterUsername(new EncryptCredentails()
-				.decrypt(CommonFunctions.getPropertyValues().getProperty("username")));
+				.decrypt(CommonFunctions.getPropertyValues().getProperty("swagusername")));
 		new SwagLabLandingPage().enterPassword(new EncryptCredentails()
-				.decrypt(CommonFunctions.getPropertyValues().getProperty("password")));
+				.decrypt(CommonFunctions.getPropertyValues().getProperty("swagpassword")));
 		new SwagLabLandingPage().clickLoginButton();
 
 	}
