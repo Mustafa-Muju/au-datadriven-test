@@ -93,7 +93,7 @@ public class TestBase {
 	/**
 	 * Email and report variables
 	 */
-	public static String emailReport = System.getenv("mail");
+	public static String emailReport = System.getenv("Mail");
 	public static String mailVerbose = "";
 	public static String toReport = "";
 

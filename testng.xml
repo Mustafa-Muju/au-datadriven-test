@@ -7,7 +7,7 @@
 			<method-selector>
 				<script language="beanshell">
 					<![CDATA[
-                    String testGroup = System.getenv("gTag");
+                    String testGroup = System.getenv("GTag");
                     groups.containsKey(testGroup);
                 ]]>
 				</script>
