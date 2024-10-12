@@ -13,7 +13,7 @@
 
 &emsp;&emsp;&emsp;**Note: Incognito mode is provided only for chrome browser. For other browsers only normal mode.**
 
-### 2. Test Group Name
+### 2. TEST GROUP NAME
 
 	GTag=GroupName
 - **GroupName** - Test Group Name of the test cases to be executed (ex: swagtest)
