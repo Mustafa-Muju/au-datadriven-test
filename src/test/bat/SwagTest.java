@@ -33,6 +33,10 @@ public class SwagTest extends TestBase {
 		getMethodData(1);
 		InvokeBrowser.invokeApplication(CommonFunctions.getdata("Platform"));
 		SwagLabFlow.swagLabLoginFlow();
+		SwagLabFlow.selectProductCartFlow();
+		SwagLabFlow.fillPersonalDetails();
+		SwagLabFlow.verifyAndContinueCheckoutPage();
+		SwagLabFlow.verifyOrderCreation();
 
 	}
 

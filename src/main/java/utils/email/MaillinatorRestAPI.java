@@ -111,17 +111,6 @@ public class MaillinatorRestAPI extends TestBase {
 		getInbox(email, subjectName);
 		JsonPath jsonPathEvaluator = getEmailBody(email, emailIdentity).jsonPath();
 
-		try {
-				verifyCode.set(CommonFunctions.regexText("(\\d+)",
-						Jsoup.parse(jsonPathEvaluator.getString("parts[0].body")).text()));
-
-			CommonFunctions.logMessage(
-					"Verification code fetched from mailinator mail server for " + codeName + " ===> " + getVerifyCode());
-			Code.set(getVerifyCode());
-
-		} catch (Exception e) {
-			CommonFunctions.logErrorMessageStopExecution("Error while fetching code using mailinator...");
-		}
 	}
 
 	/**

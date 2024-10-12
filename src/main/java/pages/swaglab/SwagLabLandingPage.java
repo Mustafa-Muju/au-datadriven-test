@@ -23,7 +23,7 @@ public class SwagLabLandingPage extends TestBase {
 
 	@FindBy(id = "password")
 	private WebElement password;
-	
+
 	@FindBy(id = "login-button")
 	private WebElement loginBtn;
 
@@ -38,7 +38,7 @@ public class SwagLabLandingPage extends TestBase {
 		CommonFunctions.checkCurrentPageTitle("Swag Labs");
 		CommonFunctions.logMessage("<-----Swag Labs Landing Page----->");
 	}
-	
+
 	/**
 	 * 
 	 * @This method enter the username of the swagslab
@@ -49,7 +49,7 @@ public class SwagLabLandingPage extends TestBase {
 	public void enterUsername(String user) throws Exception {
 		CommonFunctions.Sendkeys(username, user, "username field");
 	}
-	
+
 	/**
 	 * 
 	 * @This method enters the password of the swagslab
@@ -60,7 +60,7 @@ public class SwagLabLandingPage extends TestBase {
 	public void enterPassword(String passKey) throws Exception {
 		CommonFunctions.Sendkeys(password, passKey, "password field");
 	}
-	
+
 	/**
 	 * 
 	 * @This method clicks the login button of swagslab
@@ -70,7 +70,5 @@ public class SwagLabLandingPage extends TestBase {
 	public void clickLoginButton() throws Exception {
 		CommonFunctions.clickWebelement(loginBtn, "login button");
 	}
-
-	
 
 }

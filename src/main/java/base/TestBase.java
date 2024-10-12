@@ -149,16 +149,16 @@ public class TestBase {
 	public static JSONObject testResults = new JSONObject();
 
 	/**
-	 * Global variables for Email verification
+	 * All Swag Lab test global variables
 	 */
-	public static ThreadLocal<String> verifyCode = new ThreadLocal<String>();
-	public static String getVerifyCode() {
-		return verifyCode.get();
+	public static ThreadLocal<String> productName = new ThreadLocal<String>();
+	public static String getProductName() {
+		return productName.get();
 	}
 	
-	public static ThreadLocal<String> Code = new ThreadLocal<String>();
-	public static String getCode() {
-		return Code.get();
+	public static ThreadLocal<String> productPrice = new ThreadLocal<String>();
+	public static String getProductPrice() {
+		return productPrice.get();
 	}
 
 	/**
