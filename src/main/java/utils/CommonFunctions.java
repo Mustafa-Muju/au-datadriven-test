@@ -22,6 +22,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -289,7 +290,7 @@ public class CommonFunctions extends TestBase {
 
 	public static void actionClick(WebElement webele, String Ele_name) throws Exception {
 		try {
-			new WebDriverWait(getDriver(), 30).until(ExpectedConditions.elementToBeClickable(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(webele));
 			Actions ob = new Actions(getDriver());
 			Action action = ob.moveToElement(webele).click().build();
 			action.perform();
@@ -306,7 +307,7 @@ public class CommonFunctions extends TestBase {
 	 **/
 	public static void clickWebelement(WebElement webele, String Ele_name) throws Exception {
 		try {
-			new WebDriverWait(getDriver(), 30).until(ExpectedConditions.elementToBeClickable(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(webele));
 			webele.click();
 			logMessage("The " + Ele_name + " is clicked");
 		} catch (Exception e) {
@@ -321,7 +322,7 @@ public class CommonFunctions extends TestBase {
 	 **/
 	public static void Sendkeys(WebElement webele, String value, String Ele_name) throws Exception {
 		try {
-			new WebDriverWait(getDriver(), 30).until(ExpectedConditions.visibilityOf(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(webele));
 			webele.click();
 			webele.clear();
 			webele.sendKeys(value);
@@ -347,7 +348,7 @@ public class CommonFunctions extends TestBase {
 	public static void SendkeysAttrib(WebElement webele, String attrib, String value, String Ele_name)
 			throws Exception {
 		try {
-			new WebDriverWait(getDriver(), 30).until(ExpectedConditions.visibilityOf(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(webele));
 			webele.click();
 			while (!webele.getAttribute(attrib).equals("")) {
 				webele.sendKeys(Keys.BACK_SPACE);
@@ -371,7 +372,7 @@ public class CommonFunctions extends TestBase {
 	 **/
 	public static void sendKeysWithDeleteAll(WebElement webele, String value, String Ele_name) throws Exception {
 		try {
-			new WebDriverWait(getDriver(), 30).until(ExpectedConditions.visibilityOf(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(webele));
 			while (!webele.getAttribute("value").equals("")) {
 				if (System.getProperty("os.name").contains("OS X")) {
 					webele.sendKeys(Keys.COMMAND + "a");
@@ -396,7 +397,7 @@ public class CommonFunctions extends TestBase {
 	 **/
 	public static void SendkeysWithoutInputLog(WebElement webele, String value, String Ele_name) throws Exception {
 		try {
-			new WebDriverWait(getDriver(), 20).until(ExpectedConditions.visibilityOf(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(webele));
 			webele.click();
 			webele.clear();
 			webele.sendKeys(value);
@@ -415,7 +416,7 @@ public class CommonFunctions extends TestBase {
 	 **/
 	public static void selectDropDownValue(WebElement webele, String value, String Ele_name) throws Exception {
 		try {
-			new WebDriverWait(getDriver(), 20).until(ExpectedConditions.visibilityOf(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(webele));
 			Select select = new Select(webele);
 			select.selectByValue(value);
 			logMessage(value + " is selected into the " + Ele_name + " dropdown");
@@ -433,7 +434,7 @@ public class CommonFunctions extends TestBase {
 	 **/
 	public static void selectDropDownText(WebElement webele, String value, String Ele_name) throws Exception {
 		try {
-			new WebDriverWait(getDriver(), 20).until(ExpectedConditions.visibilityOf(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(webele));
 			Select select = new Select(webele);
 			select.selectByVisibleText(value);
 			logMessage(value + " is selected into the " + Ele_name + " dropdown");
@@ -452,7 +453,7 @@ public class CommonFunctions extends TestBase {
 	 */
 	public static boolean checkCurrentPage(WebElement webele) {
 		try {
-			new WebDriverWait(getDriver(), 7).until(ExpectedConditions.elementToBeClickable(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(7)).until(ExpectedConditions.elementToBeClickable(webele));
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -474,7 +475,7 @@ public class CommonFunctions extends TestBase {
 			}
 
 		};
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(pageLoadCondition);
 	}
 
@@ -538,7 +539,7 @@ public class CommonFunctions extends TestBase {
 	 */
 	public static boolean elementIsVisible(WebElement webele) throws Exception {
 		try {
-			new WebDriverWait(getDriver(), 20).until(ExpectedConditions.visibilityOf(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(webele));
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -555,7 +556,7 @@ public class CommonFunctions extends TestBase {
 	 */
 	public static boolean elementIsInVisible(WebElement webele) throws Exception {
 		try {
-			new WebDriverWait(getDriver(), 15).until(ExpectedConditions.invisibilityOf(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(15)).until(ExpectedConditions.invisibilityOf(webele));
 			return false;
 		} catch (Exception e) {
 			return true;
@@ -574,7 +575,7 @@ public class CommonFunctions extends TestBase {
 	public static void elementToBeClickable(WebElement ele, String objname) throws Exception {
 
 		try {
-			new WebDriverWait(getDriver(), 20).until(ExpectedConditions.elementToBeClickable(ele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(ele));
 		} catch (Exception e) {
 			logErrorMessageStopExecution("The object " + objname + " is not clickable");
 		}
@@ -588,7 +589,7 @@ public class CommonFunctions extends TestBase {
 	public static boolean isExist(WebDriver driverPass, String string) throws Exception {
 		boolean check = false;
 		try {
-			WebDriverWait wait = new WebDriverWait(driverPass, 5);
+			WebDriverWait wait = new WebDriverWait(driverPass, Duration.ofSeconds(5));
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(string)));
 			wait.ignoring(NoSuchElementException.class);
 			check = true;
@@ -647,7 +648,7 @@ public class CommonFunctions extends TestBase {
 	 */
 	public static void checkCurrentPage(WebElement webele, String pageName) throws Exception {
 		try {
-			new WebDriverWait(getDriver(), 10).until(ExpectedConditions.visibilityOf(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(webele));
 			if (!webele.getText().contains(pageName)) {
 				waitForPageLoad(getDriver());
 			}
@@ -688,7 +689,7 @@ public class CommonFunctions extends TestBase {
 	public static String getTextOfElement(WebElement webele, String objName) throws Exception {
 		String elementText = null;
 		try {
-			new WebDriverWait(getDriver(), 30).until(ExpectedConditions.visibilityOf(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(webele));
 			elementText = webele.getText();
 		} catch (Exception e) {
 			logErrorMessageStopExecution("The Object " + objName + " is not available.");
@@ -705,7 +706,7 @@ public class CommonFunctions extends TestBase {
 	public static String getAttributeOfElement(WebElement webele, String objName, String attributeName) {
 		String element = null;
 		try {
-			new WebDriverWait(getDriver(), 30).until(ExpectedConditions.visibilityOf(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(webele));
 			element = webele.getAttribute(attributeName);
 		} catch (Exception e) {
 			logErrorMessage("The Object " + objName + " is not available.");
@@ -795,7 +796,7 @@ public class CommonFunctions extends TestBase {
 
 	public static void typeTextWithTimeOut(WebDriver driver, WebElement locator, String text, Integer timeOut) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, timeOut);
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 			wait.until(ExpectedConditions.elementToBeClickable(locator));
 
 			Actions builder = new Actions(driver);
@@ -803,7 +804,7 @@ public class CommonFunctions extends TestBase {
 					.sendKeys(locator, Keys.TAB).build();
 			seriesOfActions.perform();
 			logMessage(text + " is entered into the " + locator + " textbox");
-		} catch (ElementNotVisibleException e) {
+		} catch (Exception e) {
 			logErrorMessage(String.format("Expected element %s was not found", locator.toString()));
 		}
 	}
@@ -827,7 +828,7 @@ public class CommonFunctions extends TestBase {
 	 */
 	public static void clickJSE(WebElement ele, String elementName) {
 		try {
-			WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+			WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.visibilityOf(ele));
 			wait.until(ExpectedConditions.elementToBeClickable(ele));
 			jse = (JavascriptExecutor) getDriver();
@@ -848,7 +849,7 @@ public class CommonFunctions extends TestBase {
 	 */
 	public static void clickJSEString(String ele, String elementName) {
 		try {
-			new WebDriverWait(getDriver(), 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ele)));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ele)));
 			WebElement webele = getDriver().findElement(By.xpath(ele));
 			jse = (JavascriptExecutor) getDriver();
 			jse.executeScript("arguments[0].click();", webele);
@@ -922,7 +923,7 @@ public class CommonFunctions extends TestBase {
 	 */
 	public static void sendKeysIndividual(WebElement ele, String elementName, String strName) {
 		try {
-			WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+			WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.visibilityOf(ele));
 			wait.until(ExpectedConditions.elementToBeClickable(ele));
 			ele.click();
@@ -1271,7 +1272,7 @@ public class CommonFunctions extends TestBase {
 	 */
 	public static boolean elementVisibleToCheck(WebElement webele, int timeOut) throws Exception {
 		try {
-			new WebDriverWait(getDriver(), timeOut).until(ExpectedConditions.visibilityOf(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(timeOut)).until(ExpectedConditions.visibilityOf(webele));
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -1290,7 +1291,7 @@ public class CommonFunctions extends TestBase {
 	 */
 	public static void robotKeyMoveClick(WebElement webele, int clicks, String eleName) throws Exception {
 		try {
-			new WebDriverWait(getDriver(), 20).until(ExpectedConditions.visibilityOf(webele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(webele));
 			Thread.sleep(1000);
 			Robot robot = new Robot();
 			for (int click = 0; click < clicks; click++) {

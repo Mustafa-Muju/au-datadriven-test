@@ -7,13 +7,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import org.openqa.selenium.Proxy;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import main.java.base.TestBase;
 
 public class InvokeBrowser extends TestBase {
@@ -69,13 +69,12 @@ public class InvokeBrowser extends TestBase {
 
 			if (BrowserNeed.toLowerCase().contains("firefox")) {
 				if (os.contains("Windows") || os.contains("OS X")) {
-					WebDriverManager.firefoxdriver().setup();
-					DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-					capabilities.setCapability("browserName", "firefox");
-					capabilities.setCapability("marionette", true);
-					capabilities.setCapability("acceptInsecureCerts", true);
-					capabilities.setCapability("javascriptEnabled", true);
-					driver.set(new FirefoxDriver(capabilities));
+					FirefoxOptions firefoxOptions = new FirefoxOptions();
+					firefoxOptions.setCapability("browserName", "firefox");
+					firefoxOptions.setCapability("marionette", true);
+					firefoxOptions.setCapability("acceptInsecureCerts", true);
+					firefoxOptions.setCapability("javascriptEnabled", true);
+					driver.set(new FirefoxDriver(firefoxOptions));
 				} else if (os.contains("Linux")) {
 					CommonFunctions
 							.logErrorMessageStopExecution("Currently firefox not supported for linux remote jenkins");
@@ -104,14 +103,13 @@ public class InvokeBrowser extends TestBase {
 						options.addArguments("--incognito");
 					}
 //					options.addExtensions(new File(
-//							System.getProperty("user.dir") + "/src/main/resources/ext/basic-auth/extension.crx"));
+//							System.getProperty("user.dir") + "/src/main/resources/ext/extension.crx"));
 //					options.addArguments("--no-sandbox");
 
 					options.addArguments("use-fake-ui-for-media-stream");
 					options.addArguments("test-type");
 					options.addArguments("ignore-certificate-errors");
 					options.setAcceptInsecureCerts(true);
-					WebDriverManager.chromedriver().setup();
 					driver.set(new ChromeDriver(options));
 
 				} else if (os.contains("Linux")) {
@@ -132,7 +130,7 @@ public class InvokeBrowser extends TestBase {
 //					options.addArguments("--headless");
 					
 //					options.addExtensions(new File(
-//								System.getProperty("user.dir") + "/src/main/resources/ext/basic-auth/extension.crx"));
+//								System.getProperty("user.dir") + "/src/main/resources/ext/extension.crx"));
 					options.addArguments("--no-sandbox");
 					options.addArguments("--disable-setuid-sandbox");
 					options.addArguments("--disable-dev-shm-usage");
@@ -144,9 +142,7 @@ public class InvokeBrowser extends TestBase {
 					options.setCapability("chrome.switches", "--no-default-browser-check");
 					options.setCapability("chrome.prefs", chromePreferences);
 					options.setCapability(CapabilityType.PROXY, proxy);
-					options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-					options.setCapability(CapabilityType.SUPPORTS_ALERTS, true);
-					options.setCapability(CapabilityType.HAS_NATIVE_EVENTS, true);
+					options.setAcceptInsecureCerts(true);
 					options.setCapability(ChromeOptions.CAPABILITY, options);
 					driver.set(new RemoteWebDriver(new URL("http://selenium-hub.selenium:4444/wd/hub"), options));
 				}
@@ -154,7 +150,6 @@ public class InvokeBrowser extends TestBase {
 			} else if (BrowserNeed.toLowerCase().contains("msedge")) {
 				if (os.contains("Windows") || os.contains("OS X")) {
 
-					WebDriverManager.edgedriver().setup();
 					driver.set(new EdgeDriver());
 				} else if (os.contains("Linux")) {
 					CommonFunctions.logErrorMessageStopExecution(
